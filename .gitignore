@@ -1,3 +1,5 @@
 *.class
 *.war
 *.ear
+*.jar
+!lib
