@@ -11,7 +11,7 @@ http://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html
 
 ##Creamos el proyecto en el filesystem
 
-'''training@ubuntu-devops:~/devOps/repomartes/src/oata$ more HelloWorld.java 
+´´´training@ubuntu-devops:~/devOps/repomartes/src/oata$ more HelloWorld.java 
 package oata;
 
 public class HelloWorld {
