@@ -7,7 +7,11 @@
     <property name="jar.dir"     value="${build.dir}/jar"/>
 
     <property name="main-class"  value="oata.HelloWorld"/>
+  <property name="lib.dir"     value="lib"/>
 
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
 
 
     <target name="clean">
@@ -16,7 +20,7 @@
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"  classpathref="classpath"/>
     </target>
 
     <target name="jar" depends="compile">
@@ -28,9 +32,16 @@
         </jar>
     </target>
 
-    <target name="run" depends="jar">
-        <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+ <target name="run" depends="jar">
+        <java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${jar.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        </java>
     </target>
+
+
 
     <target name="clean-build" depends="clean,jar"/>
 
